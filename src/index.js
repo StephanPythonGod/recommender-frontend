@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
-import cabin from './assets/img/portfolio/cabin.png';
+import icon from './assets/img/icon.jpeg';
 
 
 function Product(props){
+    path_to_image = ''.concat('./assets/img/portfolio/', props.product,'.png')
+    import image from path_to_image;
     if (props.in_basket) {
         return (
             <div class="col-md-6 col-lg-4 mb-5" onClick={() => props.onClick(props.product)} key={props.product}>
@@ -13,7 +15,7 @@ function Product(props){
                     <div class="portfolio-item-caption-n d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-n-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src={cabin} alt="..." />
+                    <img class="img-fluid" src={image} alt="..." />
                 </div>
             </div>
             )
@@ -24,7 +26,7 @@ function Product(props){
                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src={cabin} alt="..." />
+                    <img class="img-fluid" src={image} alt="..." />
                 </div>
             </div>
             )
@@ -34,10 +36,12 @@ function Product(props){
 
 
 function Recommended(props) {
+    path_to_image = ''.concat('./assets/img/portfolio/', props.product,'.png')
+    import image from path_to_image;
     return (
         <div class="col-md-6 col-lg-4 mb-5" key={props.product + "_recommendation"}>
         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-            <img class="img-fluid" src={cabin} alt="..." />
+            <img class="img-fluid" src={image} alt="..." />
         </div>
     </div>
     )
@@ -204,7 +208,7 @@ class Website extends React.Component {
         <div>
             <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
-                <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
+                <img class="masthead-avatar mb-5" src={icon} alt="..." />
                 <h1 class="masthead-heading text-uppercase mb-0">E-Commerce Recommender Demo</h1>
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>

@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './style.css';
 
 import icon from './assets/img/icon.jpeg';
+import test_img from './assets/img/portfolio/bagels.png'
 
 
 function Product(props){
-    const images = require.context('./assets/img/portfolio', true);
-    loadImage = imageName => (assets(`./${imageName}`).default);
+    const requestImageFile = require.context('./assets/img/portfolio', true);
+    // loadImage = imageName => (assets(`./${imageName}`).default);
     if (props.in_basket) {
         return (
             <div class="col-md-6 col-lg-4 mb-5" onClick={() => props.onClick(props.product)} key={props.product}>
@@ -15,7 +16,9 @@ function Product(props){
                     <div class="portfolio-item-caption-n d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-n-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src={loadImage(''.concat(props.product,'.png'))} alt="..." />
+                    {/* <img class="img-fluid" src={requestImageFile(`./${props.product}.png`)} alt="..." /> */}
+                    <img class="img-fluid" src={test_img} alt="..." />
+
                 </div>
             </div>
             )
@@ -26,7 +29,9 @@ function Product(props){
                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src={loadImage(''.concat(props.product,'.png'))} alt="..." />
+                    {/* <img class="img-fluid" src={requestImageFile(`./${props.product}.png`)} alt="..." /> */}
+                    <img class="img-fluid" src={test_img} alt="..." />
+
                 </div>
             </div>
             )
@@ -36,12 +41,14 @@ function Product(props){
 
 
 function Recommended(props) {
-    path_to_image = ''.concat('./assets/img/portfolio/', props.product,'.png')
-    import image from path_to_image;
+    const requestImageFile = require.context('./assets/img/portfolio', true);
+ 
     return (
         <div class="col-md-6 col-lg-4 mb-5" key={props.product + "_recommendation"}>
         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-            <img class="img-fluid" src={image} alt="..." />
+            {/* <img class="img-fluid" src={requestImageFile(`./${props.product}.png`)} alt="..." /> */}
+            <img class="img-fluid" src={test_img} alt="..." />
+
         </div>
     </div>
     )
@@ -149,7 +156,7 @@ class Website extends React.Component {
               },
             body: data
         };
-        fetch('http://localhost:5000/recommend/', requestOptions)
+        fetch('https://recommender-api-mansoori.herokuapp.com/recommend/', requestOptions)
             .then(response => response.json())
             .then(data => this.setState({ recommendation: data.slice(0,6) }, function () { this.displayRecommendation()}));
     }

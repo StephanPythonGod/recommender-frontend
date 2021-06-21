@@ -16,8 +16,8 @@ function Product(props){
                     <div class="portfolio-item-caption-n d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-n-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    {/* <img class="img-fluid" src={requestImageFile(`./${props.product}.png`)} alt="..." /> */}
-                    <img class="img-fluid" src={test_img} alt="..." />
+                    <img class="img-fluid" src={requestImageFile(`./${props.product.replace("/", "_")}.png`)} alt="..." />
+                    {/* <img class="img-fluid" src={test_img} alt="..." /> */}
 
                 </div>
             </div>
@@ -29,8 +29,8 @@ function Product(props){
                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    {/* <img class="img-fluid" src={requestImageFile(`./${props.product}.png`)} alt="..." /> */}
-                    <img class="img-fluid" src={test_img} alt="..." />
+                    <img class="img-fluid" src={requestImageFile(`./${props.product.replace("/", "_")}.png`)} alt="..." />
+                    {/* <img class="img-fluid" src={test_img} alt="..." /> */}
 
                 </div>
             </div>
@@ -46,8 +46,8 @@ function Recommended(props) {
     return (
         <div class="col-md-6 col-lg-4 mb-5" key={props.product + "_recommendation"}>
         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-            {/* <img class="img-fluid" src={requestImageFile(`./${props.product}.png`)} alt="..." /> */}
-            <img class="img-fluid" src={test_img} alt="..." />
+            <img class="img-fluid" src={requestImageFile(`./${props.product.replace("/", "_")}.png`)} alt="..." />
+            {/* <img class="img-fluid" src={test_img} alt="..." /> */}
 
         </div>
     </div>

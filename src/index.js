@@ -70,7 +70,7 @@ class Popup extends React.Component {
 
           <section class="page-section bg-primary text-white mb-0" id="recommendations">
                     <div class="container">
-                        <h2 class="page-section-heading text-center text-uppercase text-white">Recommendations</h2>
+                        <h3 class="page-section-heading text-center text-uppercase text-white">Recommendations</h3>
                         <div class="divider-custom divider-light">
                             <div class="divider-custom-line"></div>
                             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>

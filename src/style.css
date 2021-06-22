@@ -11147,14 +11147,6 @@ html {
   opacity: 0.5;
 }
 
-.Modal {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-  background-color: papayawhip;
-}
 
 .Overlay {
   position: fixed;
@@ -11170,7 +11162,7 @@ html {
 }
 
 .ReactModal__Content {
-  background: white;
+  background-color:  #1abc9c;
   width: 50rem;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);

@@ -50,6 +50,58 @@ function Recommended(props) {
 }
 
 
+class Popup extends React.Component {
+    render() {
+
+        const Recommendations = ({recommendations}) => (
+            <>
+              {recommendations.map(reco => (
+                <Recommended key = {reco} product={reco}/>
+                ))}
+            </>
+        );
+
+      return (
+        <div className='popup'>
+          <div className='popup_inner'>
+
+
+          <section class="page-section bg-primary text-white mb-0" id="recommendations">
+                    <div class="container">
+                        <h2 class="page-section-heading text-center text-uppercase text-white">Recommendations</h2>
+                        <div class="divider-custom divider-light">
+                            <div class="divider-custom-line"></div>
+                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                            <div class="divider-custom-line"></div>
+                        </div>
+
+
+                    <h4 class="text-uppercase text-center mb-0">What we would recommend for you</h4>
+
+
+
+                    <div class="divider-custom divider-light">
+                    </div>
+
+
+                <div class="row justify-content-center">
+                    <Recommendations recommendations={this.props.recommendations}/>
+                </div>
+
+                <div class="close-button mt-4">
+                        <button class="btn btn-xl btn-outline-light" onClick={this.props.closePopup}>
+                            <i class="fas fa-download me-2"></i>
+                            Go Back To Products ...
+                        </button>
+                </div>
+
+          </div>
+          </section>
+        </div>
+        </div>
+      );
+    }
+  }
 
 
 
@@ -99,9 +151,16 @@ class Website extends React.Component {
                 "all- purpose"
             ],
             basket : [],
-            recommendation : []
+            recommendation : [],
+            showPopup: false
         }
     }
+
+    togglePopup() {
+        this.setState({
+          showPopup: !this.state.showPopup
+        });
+      }
 
     handleClick(i) {
         var basket = this.state.basket.slice();
@@ -197,17 +256,11 @@ class Website extends React.Component {
 
 
         const recommendations = this.state.recommendation.slice();
-        const Recommendations = ({recommendations}) => (
-            <>
-              {recommendations.map(reco => (
-                <Recommended key = {reco} product={reco}/>
-                ))}
-            </>
-        );
+
 
 
         return (
-        <div>
+        <>
             <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <img class="masthead-avatar mb-5" src={window.location.origin + "/assets/img/icon.jpeg" } alt="..." />
@@ -220,8 +273,14 @@ class Website extends React.Component {
                 <p class="masthead-subheading font-weight-light mb-0">by Green Software Solutions</p>
             </div>
             </header>
+
+
+
             
             <section class="page-section portfolio" id="portfolio">
+
+
+
             <div class="container">
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Products</h2>
                 <div class="divider-custom">
@@ -237,36 +296,31 @@ class Website extends React.Component {
 
 
                 </div>
-                <section class="page-section bg-primary text-white mb-0" id="recommendations">
-                    <div class="container">
-                        <h2 class="page-section-heading text-center text-uppercase text-white">Recommendations</h2>
-                        <div class="divider-custom divider-light">
-                            <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                            <div class="divider-custom-line"></div>
-                        </div>
 
 
-                    <h4 class="text-uppercase text-center mb-0">What we would recommend for you</h4>
 
-                    <div class="divider-custom divider-light">
-                    </div>
+                    {this.state.showPopup ? 
+                        <Popup
+                            recommendations={recommendations}
+                            closePopup={this.togglePopup.bind(this)}
+                        />
+                        : null
+                        }
 
-                    <div class="row justify-content-center">
 
 
-                        <Recommendations recommendations={recommendations}/>
-
-                    </div>
 
                     </div>
                 </section>
+            {!this.state.showPopup ? 
+                    <div>
+                        <button class="btn btn-xl btn-outline-dark scrollTop" onClick={this.togglePopup.bind(this)}>Recommendations</button>
+                    </div>
+                    : null
+                    }
 
-            </div>
-            </section>
-        
-        </div>
 
+            </>        
         )
     }
 }

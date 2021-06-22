@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
+import Modal from 'react-modal';
 
+Modal.setAppElement('#root');
 
 
 function Product(props){
@@ -62,8 +64,8 @@ class Popup extends React.Component {
         );
 
       return (
-        <div className='popup'>
-          <div className='popup_inner'>
+        // <div className='popup'>
+        //   <div className='popup_inner'>
 
 
           <section class="page-section bg-primary text-white mb-0" id="recommendations">
@@ -97,8 +99,8 @@ class Popup extends React.Component {
 
           </div>
           </section>
-        </div>
-        </div>
+        // </div>
+        // </div>
       );
     }
   }
@@ -298,15 +300,29 @@ class Website extends React.Component {
                 </div>
 
 
-
+{/* 
                     {this.state.showPopup ? 
                         <Popup
                             recommendations={recommendations}
                             closePopup={this.togglePopup.bind(this)}
                         />
                         : null
-                        }
+                        } */}
 
+
+                <Modal
+                    isOpen={this.state.showPopup}
+                    contentLabel="Recommendation_Popup"
+                    onRequestClose={this.togglePopup.bind(this)}
+                    className="ReactModal__Content"
+                    overlayClassName="Overlay"
+                    
+                    >
+                    <Popup                              
+                        recommendations={recommendations}
+                        closePopup={this.togglePopup.bind(this)}
+                    />
+                </Modal>
 
 
 

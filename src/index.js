@@ -42,8 +42,11 @@ function Product(props){
 function Recommended(props) {
  
     return (
-        <div class="col-md-6 col-lg-4 mb-5" key={props.product + "_recommendation"}>
+        <div class="col-md-6 col-lg-4 mb-5" onClick={() => props.onClick(props.product)} key={props.product}>
         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+            </div>
             <img class="img-fluid" src={window.location.origin + "/assets/img/portfolio/" + props.product.replace("/", "_") + ".png"} alt="..." />
 
         </div>
@@ -58,7 +61,7 @@ class Popup extends React.Component {
         const Recommendations = ({recommendations}) => (
             <>
               {recommendations.map(reco => (
-                <Recommended key = {reco} product={reco}/>
+                <Recommended key = {reco} product={reco} onClick= {this.props.onClick}/>
                 ))}
             </>
         );
@@ -321,6 +324,7 @@ class Website extends React.Component {
                     <Popup                              
                         recommendations={recommendations}
                         closePopup={this.togglePopup.bind(this)}
+                        onClick= {i => this.handleClick(i)}
                     />
                 </Modal>
 
